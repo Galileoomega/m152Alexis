@@ -1,0 +1,50 @@
+body {
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    background-color: #3d74ff;
+    padding: 5px;
+    padding-left: 10px;
+    color: white;
+}
+
+.navbar .icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.page {
+    width: auto;
+    padding: 7px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.page:hover {
+    background-color: rgba(255, 255, 255, 0.171);
+}
+
+.new-post {
+    width: auto;
+    padding: 7px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    background-color: white;
+    border: none;
+    color: black !important;
+	font: inherit;
+	outline: inherit;
+}
+
+.new-post:hover {
+    background-color: white;
+}

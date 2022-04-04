@@ -1,3 +1,3 @@
 <?php include "layout/navbar.php"; ?>
-Home works!
+Post works!
 <?php include "layout/footer.php"; ?>
