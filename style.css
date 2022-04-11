@@ -3,6 +3,11 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.profile-picture {
+    width: 100px;
+    height: 100px;
+}
+
 .navbar {
     display: flex;
     align-items: center;
@@ -12,6 +17,7 @@ body {
     padding: 5px;
     padding-left: 10px;
     color: white;
+    margin-bottom: 20px;
 }
 
 .navbar .icon {
