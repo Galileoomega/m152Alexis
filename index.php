@@ -1,3 +1,4 @@
 <?php include "layout/navbar.php"; ?>
-Home works!
+<img class="profile-picture" src="assets/cat-weird-weird.gif" alt="">
+<h1>Welcome !</h1>
 <?php include "layout/footer.php"; ?>

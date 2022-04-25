@@ -3,10 +3,9 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.container {
+.profile-picture {
     width: 100px;
-    height: 100%;
-    background-color: red;
+    height: 100px;
 }
 
 .navbar {
@@ -18,6 +17,7 @@ body {
     padding: 5px;
     padding-left: 10px;
     color: white;
+    margin-bottom: 20px;
 }
 
 .navbar .icon {
