@@ -3,6 +3,12 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.container {
+    width: 100px;
+    height: 100%;
+    background-color: red;
+}
+
 .navbar {
     display: flex;
     align-items: center;
