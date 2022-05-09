@@ -1,10 +1,14 @@
 <?php
 
+require_once 'models/post.php';
+
+
 // Initialisation des variables
 $commentaire = "";
 $file = "";
 
 if (filter_has_var(INPUT_POST,'submit')) {
+    echo "test";
     
     // Dossier temporaire
     $uploads_dir = './uploads';
@@ -42,21 +46,3 @@ if (filter_has_var(INPUT_POST,'submit')) {
         exit;
     }
 }
-
-include "layout/navbar.php";
-
-?>
-
-<div class="post-container">
-    <div class="post-wrapper">
-        <h1>Nouveau post</h1>
-        <form method="post" action="post.php" enctype="multipart/form-data">
-            <textarea placeholder="Ecrivez votre message ici..." name="commentaire" id="commentaire" cols="30" rows="10"></textarea>
-            <input name="file[]" type="file" multiple accept="image/*">
-
-            <input type="submit" name="submit">
-        </form>
-    </div>
-</div>
-
-<?php include "layout/footer.php"; ?>
