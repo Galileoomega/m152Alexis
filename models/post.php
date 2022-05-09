@@ -11,16 +11,29 @@ function getAllPosts() {
     return $request->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function addPost($commentaire, $images) {
-    $db = connectDb();
-    $sql = "INSERT INTO post(commentaire, images) "
-		. "VALUES(:commentaire, :images)";
-    $request = $db->prepare($sql);
-    $request->execute(array(
-		"commentaire" => $commentaire,
-		"images" => $images
-		));
-    return $db->LastInsertID();
+function addPost($commentaire) {
+  echo $commentaire;
+  $db = connectDb();
+  $sql = "INSERT INTO post(commentaire) "
+  . "VALUES(:commentaire)";
+  $request = $db->prepare($sql);
+  $request->execute(array(
+  "commentaire" => $commentaire
+  ));
+  return $db->LastInsertID();
+}
+
+function addMedia($idPost, $name, $type) {
+  $db = connectDb();
+  $sql = "INSERT INTO media(idPost, nomMedia, typeMedia) "
+  . "VALUES(:idPost, :name, :type)";
+  $request = $db->prepare($sql);
+  $request->execute(array(
+    "idPost" => $idPost,
+    "name" => $name,
+    "type" => $type
+  ));
+  return $db->LastInsertID();
 }
 
 ?>
