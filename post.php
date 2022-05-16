@@ -8,6 +8,11 @@ $file = "";
 
 if (filter_has_var(INPUT_POST,'submit')) {
 
+    // récupération des données provenant des données saisies par l'utilisateur    
+    $commentaire = trim(filter_input(INPUT_POST,'commentaire',FILTER_SANITIZE_STRING));
+    $file = trim(filter_input(INPUT_POST,'file',FILTER_SANITIZE_STRING));
+    $idPost = filter_input(INPUT_POST, 'idPost', FILTER_VALIDATE_INT);
+
     $idPost = addPost($commentaire);
 
     //Sauvegarde les fichiers et les place dans un autre dossier
@@ -19,20 +24,21 @@ if (filter_has_var(INPUT_POST,'submit')) {
                 $name = basename($_FILES["file"]["name"][$key]);
                 $name = uniqid() . $name;
 
-                // Ajouer un media
-                addMedia($idPost, $name, $_FILES["file"]["type"][$key]);
+                $mediaId = addMedia($idPost, $name, $_FILES["file"]["type"][$key]);
+
+                // Ajouer un media dans la base de données
+                if(null !== $mediaId) {
+                    move_uploaded_file($tmp_name, "$uploads_dir/$name");
+                }
+                else {
+                    // Si le ficher na pas pu etre uploader dans la base de données
+                }
                 
-                move_uploaded_file($tmp_name, "$uploads_dir/$name");
             } else {
                 $message = "Le type de fichier n'est pas supporté !";
             }
         }    
     }
-
-    // récupération des données provenant des données saisies par l'utilisateur    
-    $commentaire = trim(filter_input(INPUT_POST,'commentaire',FILTER_SANITIZE_STRING));
-    $file = trim(filter_input(INPUT_POST,'file',FILTER_SANITIZE_STRING));
-    $idPost = filter_input(INPUT_POST, 'idPost', FILTER_VALIDATE_INT);
 }
 
 include "layout/navbar.php";

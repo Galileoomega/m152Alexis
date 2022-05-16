@@ -3,16 +3,25 @@
 require_once 'dbconnection.php';
 
 function getAllPosts() {
-    $db = connectDb();
-    $sql = "SELECT commentaire location "
-            . "FROM post ";
-    $request = $db->prepare($sql);
-    $request->execute();
-    return $request->fetchAll(PDO::FETCH_ASSOC);
+  $db = connectDb();
+  $sql = "SELECT idPost, commentaire FROM post ORDER BY creationDate DESC";
+  $request = $db->prepare($sql);
+  $request->execute();
+  return $request->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getMediaWithPostId($postId) {
+  $id = (int)$postId;
+  $db = connectDb();
+  $sql = "SELECT nomMedia FROM media WHERE idPost=" . $id;
+  $request = $db->prepare($sql);
+  $request->execute();
+  return $request->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function addPost($commentaire) {
   echo $commentaire;
+  var_dump($commentaire);
   $db = connectDb();
   $sql = "INSERT INTO post(commentaire) "
   . "VALUES(:commentaire)";

@@ -17,4 +17,18 @@ catch(Exception $e)
 
 <img class="profile-picture" src="assets/cat-weird-weird.gif" alt="">
 <h1>Welcome !</h1>
+
+<?php 
+	foreach($posts as $post) :
+?>
+<div class="card">
+	<?php 
+		foreach(getMediaWithPostId($post["idPost"]) as $media) :
+	?>
+	<img src="uploads/<?= $media["nomMedia"] ?>" alt="">
+	<?php endforeach; ?>
+	<?= $post["commentaire"] ?>
+</div>
+<?php endforeach; ?>
+
 <?php include "layout/footer.php"; ?>

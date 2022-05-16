@@ -3,8 +3,8 @@
 function connectDB(){
 	$dbServer = "127.0.0.1";
 	$dbName = "m152";
-	$dbUser = "root";
-	$dbPwd = "";
+	$dbUser = "m152admin";
+	$dbPwd = "m152admin";
 	
 	static $bdd = null;
 	
@@ -14,5 +14,4 @@ function connectDB(){
 
 	}
 	return $bdd;
-	
 }
