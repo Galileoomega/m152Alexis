@@ -13,15 +13,13 @@ function getAllPosts() {
 function getMediaWithPostId($postId) {
   $id = (int)$postId;
   $db = connectDb();
-  $sql = "SELECT nomMedia FROM media WHERE idPost=" . $id;
+  $sql = "SELECT * FROM media WHERE idPost=" . $id;
   $request = $db->prepare($sql);
   $request->execute();
   return $request->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function addPost($commentaire) {
-  echo $commentaire;
-  var_dump($commentaire);
   $db = connectDb();
   $sql = "INSERT INTO post(commentaire) "
   . "VALUES(:commentaire)";

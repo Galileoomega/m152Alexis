@@ -25,7 +25,19 @@ catch(Exception $e)
 	<?php 
 		foreach(getMediaWithPostId($post["idPost"]) as $media) :
 	?>
-	<img src="uploads/<?= $media["nomMedia"] ?>" alt="">
+	<?php
+	$type = explode("/", $media["typeMedia"])[0];
+	if($type == "image") {?>
+		<img src="uploads/<?= $media["nomMedia"] ?>" alt="">
+	<?php
+	}
+	else if($type == "video") { ?>
+	<video muted loop autoplay width="500px" height="500px" controls="controls"> 
+        <source src="uploads/<?= $media["nomMedia"] ?>"> 
+    </video> 
+	<?php
+	}
+	?>
 	<?php endforeach; ?>
 	<?= $post["commentaire"] ?>
 </div>
