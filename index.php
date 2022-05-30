@@ -32,14 +32,22 @@ catch(Exception $e)
 	<?php
 	}
 	else if($type == "video") { ?>
-	<video muted loop autoplay width="500px" height="500px" controls="controls"> 
+	<video playsinline disablepictureinpicture muted loop autoplay width="500px" height="500px" controls="controls"> 
         <source src="uploads/<?= $media["nomMedia"] ?>"> 
     </video> 
+	<?php
+	}
+	else if($type == "audio") { ?>
+	<audio controls="controls">
+	    <source src="<?= $media["nomMedia"] ?>">
+	  Votre navigateur ne supporte pas la balise audio
+	</audio>
 	<?php
 	}
 	?>
 	<?php endforeach; ?>
 	<?= $post["commentaire"] ?>
+	<div class="btn-delete"></div>
 </div>
 <?php endforeach; ?>
 

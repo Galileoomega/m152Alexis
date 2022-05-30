@@ -19,6 +19,25 @@ function getMediaWithPostId($postId) {
   return $request->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function deletePostWithId($postId) {
+  $id = (int)$postId;
+  $db = connectDb();
+  $sql = "DELETE FROM post WHERE idPost=" . $id;
+  $request = $db->prepare($sql);
+  $request->execute();
+  deleteMediaWithPostId($postId);
+  return;
+}
+
+function deleteMediaWithPostId($postId) {
+  $id = (int)$postId;
+  $db = connectDb();
+  $sql = "DELETE FROM media WHERE idPost=" . $id;
+  $request = $db->prepare($sql);
+  $request->execute();
+  return;
+}
+
 function addPost($commentaire) {
   $db = connectDb();
   $sql = "INSERT INTO post(commentaire) "
@@ -32,6 +51,7 @@ function addPost($commentaire) {
 
 function addMedia($idPost, $name, $type) {
   $db = connectDb();
+  $idPost = 1000;
   $sql = "INSERT INTO media(idPost, nomMedia, typeMedia) "
   . "VALUES(:idPost, :name, :type)";
   $request = $db->prepare($sql);
@@ -42,5 +62,4 @@ function addMedia($idPost, $name, $type) {
   ));
   return $db->LastInsertID();
 }
-
 ?>
